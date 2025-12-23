@@ -1,10 +1,10 @@
+import { Softphone } from "@/components/Softphone"
 import { Phone } from "lucide-react"
 
 const Index = () => {
   return (
     <div>
       <main className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-      {/* Header */}
       <header className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-2">
           <div className="p-2 rounded-full bg-primary/10">
@@ -18,10 +18,7 @@ const Index = () => {
           WebRTC-based SIP phone for browser calls
         </p>
       </header>
-
-      SOFTPHONE
-
-      {/* Footer with instructions */}
+      <Softphone />
       <footer className="mt-8 text-center text-xs text-muted-foreground max-w-md">
         <p className="mb-2">
           <strong>Quick Start:</strong> Enter your SIP credentials in the settings panel above,
