@@ -29,7 +29,7 @@ const DEFAULT_CREDENTIALS: SipCredentials = {
   username: "",
   password: "",
   domain: "sip.example.com",
-  wsServer: "wss://sip.example.com:8089/ws",
+  wsServer: "ws://sip.example.com:8089/ws",
 };
 
 export function SettingsPanel({

@@ -119,14 +119,17 @@ class SipService {
         authorizationPassword: credentials.password,
         // Handle incoming calls
         delegate: {
-          onInvite: (invitation: Invitation) => this.handleIncomingCall(invitation),
+          onInvite: (invitation: Invitation) => {
+            console.log('Call incoming', invitation);
+            this.handleIncomingCall(invitation)},
         },
         // Log level (set to "debug" for troubleshooting)
-        logLevel: "warn",
+        logLevel: "debug",
       };
 
       // Create the UserAgent
       this.userAgent = new UserAgent(userAgentOptions);
+      console.log('UA Contact: ', this.userAgent.contact.uri.toString());
 
       // Start the UserAgent (connects the WebSocket)
       await this.userAgent.start();
