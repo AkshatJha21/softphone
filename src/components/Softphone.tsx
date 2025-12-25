@@ -47,7 +47,6 @@ export function Softphone() {
         // Play a sound on incoming call (browser permitting)
         if (state === "ringing") {
           // You could add a ringtone here
-          console.log("Incoming call!");
         }
       },
       

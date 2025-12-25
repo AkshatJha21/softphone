@@ -120,7 +120,6 @@ class SipService {
         // Handle incoming calls
         delegate: {
           onInvite: (invitation: Invitation) => {
-            console.log('Call incoming', invitation);
             this.handleIncomingCall(invitation)},
         },
         // Log level (set to "debug" for troubleshooting)
@@ -129,7 +128,6 @@ class SipService {
 
       // Create the UserAgent
       this.userAgent = new UserAgent(userAgentOptions);
-      console.log('UA Contact: ', this.userAgent.contact.uri.toString());
 
       // Start the UserAgent (connects the WebSocket)
       await this.userAgent.start();
