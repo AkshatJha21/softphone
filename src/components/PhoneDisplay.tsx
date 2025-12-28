@@ -1,19 +1,8 @@
-/**
- * Phone Display Component
- * 
- * Shows the phone number being dialed with:
- * - Large, readable digits
- * - Backspace button to delete
- * - Clear visual feedback
- */
 import { Delete } from "lucide-react";
 
 interface PhoneDisplayProps {
-  // The current phone number string
   number: string;
-  // Called when backspace is pressed
   onBackspace: () => void;
-  // Whether the display is disabled
   disabled?: boolean;
 }
 
@@ -24,19 +13,16 @@ export function PhoneDisplay({
 }: PhoneDisplayProps) {
   return (
     <div className="flex items-center justify-between px-4 py-6 min-h-[80px]">
-      {/* Phone number display */}
       <div className="flex-1 text-center">
         <span
           className={`font-display text-3xl tracking-wider ${
             number ? "text-foreground" : "text-muted-foreground"
           }`}
         >
-          {/* Show placeholder if empty */}
           {number || "Enter number"}
         </span>
       </div>
 
-      {/* Backspace button - only show if there's something to delete */}
       {number && !disabled && (
         <button
           onClick={onBackspace}

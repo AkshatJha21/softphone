@@ -2,19 +2,12 @@ import { Phone, PhoneOff, Mic, MicOff, PhoneIncoming } from "lucide-react";
 import type { PhoneState } from "@/services/sipService";
 
 interface CallControlsProps {
-  // Current state of the phone
   state: PhoneState;
-  // Whether the mic is muted
   isMuted: boolean;
-  // Called when user wants to make a call
   onCall: () => void;
-  // Called when user wants to answer an incoming call
   onAnswer: () => void;
-  // Called when user wants to hang up
   onHangup: () => void;
-  // Called when user wants to toggle mute
   onMute: () => void;
-  // Whether the call button should be disabled (e.g., empty number)
   callDisabled?: boolean;
 }
 
@@ -27,10 +20,8 @@ export function CallControls({
   onMute,
   callDisabled = false,
 }: CallControlsProps) {
-  // Different UI based on phone state
   const renderControls = () => {
     switch (state) {
-      // When registered and ready, show the call button
       case "registered":
       case "disconnected":
         return (
@@ -50,11 +41,9 @@ export function CallControls({
           </div>
         );
 
-      // When ringing (incoming call), show answer and reject buttons
       case "ringing":
         return (
           <div className="flex justify-center gap-8">
-            {/* Reject button */}
             <button
               className="call-btn call-btn-hangup"
               onClick={onHangup}
@@ -62,7 +51,6 @@ export function CallControls({
             >
               <PhoneOff className="w-6 h-6" />
             </button>
-            {/* Answer button - with pulsing animation */}
             <button
               className="call-btn call-btn-answer ringing"
               onClick={onAnswer}
@@ -73,12 +61,10 @@ export function CallControls({
           </div>
         );
 
-      // When calling or in-call, show mute and hangup
       case "calling":
       case "in-call":
         return (
           <div className="flex justify-center gap-6">
-            {/* Mute button */}
             <button
               className={`call-btn call-btn-mute ${isMuted ? "active" : ""}`}
               onClick={onMute}
@@ -90,7 +76,6 @@ export function CallControls({
                 <Mic className="w-6 h-6" />
               )}
             </button>
-            {/* Hangup button */}
             <button
               className="call-btn call-btn-hangup"
               onClick={onHangup}
@@ -101,7 +86,6 @@ export function CallControls({
           </div>
         );
 
-      // Connecting state - show disabled call button
       case "connecting":
         return (
           <div className="flex justify-center">
