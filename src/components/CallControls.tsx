@@ -36,7 +36,7 @@ export function CallControls({
               disabled={callDisabled || state === "disconnected"}
               aria-label="Make call"
             >
-              <Phone className="w-6 h-6" />
+              <Phone className="w-6 h-6 text-green-400" />
             </button>
           </div>
         );
@@ -49,14 +49,14 @@ export function CallControls({
               onClick={onHangup}
               aria-label="Reject call"
             >
-              <PhoneOff className="w-6 h-6" />
+              <PhoneOff className="w-6 h-6 text-red-500" />
             </button>
             <button
               className="call-btn call-btn-answer ringing"
               onClick={onAnswer}
               aria-label="Answer call"
             >
-              <PhoneIncoming className="w-6 h-6" />
+              <PhoneIncoming className="w-6 h-6 text-green-500" />
             </button>
           </div>
         );
@@ -71,9 +71,9 @@ export function CallControls({
               aria-label={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? (
-                <MicOff className="w-6 h-6" />
+                <MicOff className="w-6 h-6 text-white" />
               ) : (
-                <Mic className="w-6 h-6" />
+                <Mic className="w-6 h-6 text-white" />
               )}
             </button>
             <button
@@ -81,7 +81,7 @@ export function CallControls({
               onClick={onHangup}
               aria-label="Hang up"
             >
-              <PhoneOff className="w-6 h-6" />
+              <PhoneOff className="w-6 h-6 text-red-500" />
             </button>
           </div>
         );
@@ -94,7 +94,7 @@ export function CallControls({
               disabled
               aria-label="Connecting..."
             >
-              <Phone className="w-6 h-6 animate-pulse" />
+              <Phone className="w-6 h-6 animate-pulse text-white" />
             </button>
           </div>
         );

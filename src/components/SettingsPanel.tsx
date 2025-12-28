@@ -41,19 +41,19 @@ export function SettingsPanel({
         className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors"
       >
         <div className="flex items-center gap-3">
-          <Settings className="w-5 h-5 text-muted-foreground" />
-          <span className="font-medium text-foreground">SIP Settings</span>
+          <Settings className="w-5 h-5 text-white" />
+          <span className="font-medium text-white">SIP Settings</span>
         </div>
         <div className="flex items-center gap-3">
           {isConnected ? (
-            <Wifi className="w-4 h-4 text-success" />
+            <Wifi className="w-4 h-4 text-green-500" />
           ) : (
-            <WifiOff className="w-4 h-4 text-muted-foreground" />
+            <WifiOff className="w-4 h-4 text-red-500" />
           )}
           {isOpen ? (
-            <ChevronUp className="w-5 h-5 text-muted-foreground" />
+            <ChevronUp className="w-5 h-5 text-white" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-muted-foreground" />
+            <ChevronDown className="w-5 h-5 text-white" />
           )}
         </div>
       </button>
@@ -132,7 +132,7 @@ export function SettingsPanel({
             <button
               type="button"
               onClick={onDisconnect}
-              className="w-full py-2 px-4 bg-destructive text-destructive-foreground rounded-md hover:opacity-90 transition-opacity font-medium"
+              className="w-full py-2 px-4 bg-destructive text-white rounded-md hover:opacity-90 transition-opacity font-medium"
             >
               Disconnect
             </button>

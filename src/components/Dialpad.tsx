@@ -1,3 +1,5 @@
+import { Button } from "./ui/button";
+
 const DIALPAD_KEYS = [
   { digit: "1", letters: "" },
   { digit: "2", letters: "ABC" },
@@ -22,22 +24,22 @@ export function Dialpad({ onDigit, disabled = false }: DialpadProps) {
   return (
     <div className="grid grid-cols-3 gap-4 p-4">
       {DIALPAD_KEYS.map((key) => (
-        <button
+        <Button
           key={key.digit}
           className={`dialpad-btn ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
           onClick={() => !disabled && onDigit(key.digit)}
           disabled={disabled}
           aria-label={`${key.digit}${key.letters ? `, ${key.letters}` : ""}`}
         >
-          <span className="text-2xl font-semibold text-foreground">
+          <span className="text-2xl font-semibold text-foreground text-white">
             {key.digit}
           </span>
           {key.letters && (
-            <span className="text-[10px] tracking-widest text-muted-foreground mt-0.5">
+            <span className="text-[10px] tracking-widest text-white mt-0.5">
               {key.letters}
             </span>
           )}
-        </button>
+        </Button>
       ))}
     </div>
   );

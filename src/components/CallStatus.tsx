@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { PhoneState } from "@/services/sipService";
+import { toast } from "sonner";
 
 interface CallStatusProps {
   state: PhoneState;
@@ -36,6 +37,7 @@ function getStatusText(state: PhoneState): string {
     case "registered":
       return "Ready";
     case "ringing":
+      toast("Incoming call");
       return "Incoming Call";
     case "calling":
       return "Calling...";

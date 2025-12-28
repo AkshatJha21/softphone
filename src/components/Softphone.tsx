@@ -5,6 +5,7 @@ import { CallControls } from "./CallControls";
 import { CallStatus } from "./CallStatus";
 import { PhoneDisplay } from "./PhoneDisplay";
 import { SettingsPanel } from "./SettingsPanel";
+import { toast } from "sonner";
 
 export function Softphone() {
   const [phoneState, setPhoneState] = useState<PhoneState>("disconnected");
@@ -41,17 +42,20 @@ export function Softphone() {
   const handleConnect = useCallback(async (credentials: SipCredentials) => {
     try {
       await sipService.register(credentials);
+      toast.success("Connected to server");
       console.log({
         title: "Connected",
         description: "Successfully registered with SIP server",
       });
     } catch (error) {
       console.error("Registration failed:", error);
+      toast.error("Registration failed");
     }
   }, []);
 
   const handleDisconnect = useCallback(async () => {
     await sipService.unregister();
+    toast.success("Disconnected from server");
     console.log({
       title: "Disconnected",
       description: "Disconnected from SIP server",
@@ -63,6 +67,7 @@ export function Softphone() {
       if (phoneState === "in-call") {
         sipService.sendDTMF(digit);
         // Optional: show feedback that tone was sent
+        toast.success(`DTMF: ${digit}`);
         console.log({
           title: `DTMF: ${digit}`,
           duration: 500,
@@ -80,6 +85,7 @@ export function Softphone() {
 
   const handleCall = useCallback(async () => {
     if (!dialedNumber) {
+      toast('Enter a number');
       console.log({
         title: "Enter a number",
         description: "Please enter a phone number or SIP address",
@@ -93,6 +99,7 @@ export function Softphone() {
       setDialedNumber("");
     } catch (error) {
       console.error("Call failed:", error);
+      toast.error('Call failed');
       console.log({
         title: "Call Failed",
         description: error instanceof Error ? error.message : "Failed to make call",
