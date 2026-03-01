@@ -71,3 +71,15 @@ export default defineConfig([
   },
 ])
 ```
+
+```
+docker build -t my-asterisk .
+docker run -d --name asterisk \
+  --hostname asterisk.local \
+  -p 5060:5060/udp \
+  -p 5060:5060/tcp \
+  -p 8088:8088/tcp \
+  -p 8089:8089/tcp \
+  -p 10000-10100:10000-10100/udp \
+  my-asterisk
+```
