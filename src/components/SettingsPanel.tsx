@@ -11,8 +11,8 @@ interface SettingsPanelProps {
 const DEFAULT_CREDENTIALS: SipCredentials = {
   username: "",
   password: "",
-  domain: "asterisk.local",
-  wsServer: "wss://localhost:8089/ws",
+  domain: "localhost",
+  wsServer: "ws:/localhost:8088/ws",
 };
 
 export function SettingsPanel({
